@@ -1,0 +1,16 @@
+version: "3.4"
+services:
+    docker-vue-frontend:
+        container_name: docker_vue_frontend
+        image: docker-vue-frontend
+        build: .
+        # user: "${UID_GID}"
+        # change volume and port
+        volumes:
+            - ./src/dist:/usr/share/nginx/html
+        ports:
+            - "8080:80"
+        environment:
+            - NODE_ENV=production
+            - BASE_URL=http://api.example.com
+            - ENV_VARIABLES=$$NODE_ENV,$$BASE_URL

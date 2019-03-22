@@ -1,0 +1,13 @@
+version: "3.4"
+services:
+    docker-vue-frontend:
+        container_name: docker_vue_frontend
+        image: docker-vue-frontend:dev
+        build: 
+            context: .
+            target: builder
+        user: "${UID_GID}"
+        volumes:
+            - ./src:/app
+        ports:
+            - "3000:3000"
